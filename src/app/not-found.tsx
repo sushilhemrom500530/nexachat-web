@@ -11,7 +11,7 @@ export default function NotFound() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/15 to-transparent blur-[130px] rounded-full pointer-events-none -z-10" />
 
       {/* Main Card */}
-      <div className="relative w-full max-w-lg bg-slate-900/90 border border-slate-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-indigo-950/50 backdrop-blur-xl text-center overflow-hidden">
+      <div className="relative w-full text-center overflow-hidden">
         {/* Prominent 404 Text */}
         <div className="mb-4">
           <span className="text-6xl sm:text-7xl font-black bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight">
@@ -47,7 +47,7 @@ export default function NotFound() {
         </div>
 
         {/* Quick Links Footer */}
-        <div className="mt-8 pt-6 border-t border-slate-800/80 flex items-center justify-center gap-6 text-xs text-slate-400">
+        <div className="mt-8 pt-6 border-t border-t-slate-800/80 flex items-center justify-center gap-6 text-xs text-slate-400">
           <Link
             href="/auth/login"
             className="hover:text-indigo-400 transition-colors flex items-center gap-1"

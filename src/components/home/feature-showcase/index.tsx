@@ -57,7 +57,7 @@ export function FeatureShowcase() {
   ];
 
   return (
-    <section id="features" className="py-20 md:py-28 bg-slate-950/60 border-t border-slate-850 relative">
+    <section id="features" className="py-20 md:py-28 bg-slate-950/60 border-t border-t-slate-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs uppercase font-mono tracking-widest font-semibold text-indigo-400">

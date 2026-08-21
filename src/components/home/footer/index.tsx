@@ -6,7 +6,7 @@ import { MessageSquare, Code2, BookOpen } from 'lucide-react';
 
 export function HomeFooter() {
   return (
-    <footer className="border-t border-slate-850 bg-slate-950 py-12 select-none">
+    <footer className="border-t border-t-slate-800 bg-slate-950 py-12 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center text-white">

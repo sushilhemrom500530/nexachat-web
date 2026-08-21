@@ -140,7 +140,7 @@ export function LoginCard({ onSuccess, isFullPage = false }: LoginCardProps) {
       </form>
 
       {/* Quick Test Accounts */}
-      <div className="mt-6 pt-5 border-t border-slate-800/80">
+      <div className="mt-6 pt-5 border-t border-t-slate-800/80">
         <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-2.5">
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
           <span>Quick Test Accounts:</span>

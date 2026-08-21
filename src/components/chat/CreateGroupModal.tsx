@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Users, X, Check, Loader2, Search, Plus } from 'lucide-react';
-import { api } from '@/lib';
+import { api } from '@/lib/api';
 import { User } from '@/types';
-import { useChat, useAuth } from '@/context';
-import { Avatar, ErrorBanner } from '@/components/common';
+import { useChat } from '@/context/ChatContext';
+import { useAuth } from '@/context/AuthContext';
+import { Avatar } from '@/components/common/Avatar';
+import { ErrorBanner } from '@/components/common/ErrorBanner';
 
 interface CreateGroupModalProps {
   isOpen: boolean;
@@ -23,26 +25,24 @@ export function CreateGroupModal({ isOpen, onClose }: CreateGroupModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const searchUsers = useCallback(
-    async (query: string) => {
-      if (!query.trim()) {
-        setSearchResults([]);
-        setIsLoadingSearch(false);
-        return;
-      }
-      setIsLoadingSearch(true);
-      try {
-        const users = await api.searchUsers(query);
-        const filtered = users.filter((u) => u._id !== currentUser?._id);
-        setSearchResults(filtered);
-      } catch {
-        // Ignore background search error
-      } finally {
-        setIsLoadingSearch(false);
-      }
-    },
-    [currentUser?._id]
-  );
+  const searchUsers = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setSearchResults([]);
+      setIsLoadingSearch(false);
+      return;
+    }
+    setIsLoadingSearch(true);
+    try {
+      const users = await api.searchUsers(query);
+      // Filter out self
+      const filtered = users.filter((u) => u._id !== currentUser?._id);
+      setSearchResults(filtered);
+    } catch {
+      // Ignore background search error
+    } finally {
+      setIsLoadingSearch(false);
+    }
+  }, [currentUser?._id]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -195,8 +195,8 @@ export function CreateGroupModal({ isOpen, onClose }: CreateGroupModalProps) {
                         key={u._id}
                         onClick={() => toggleSelectUser(u)}
                         className={`flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-all border ${isSelected
-                            ? 'bg-indigo-600/15 border-indigo-500/40 text-white'
-                            : 'bg-slate-800/30 hover:bg-slate-800/60 border-slate-800/60 text-slate-300'
+                          ? 'bg-indigo-600/15 border-indigo-500/40 text-white'
+                          : 'bg-slate-800/30 hover:bg-slate-800/60 border-slate-800/60 text-slate-300'
                           }`}
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
@@ -209,8 +209,8 @@ export function CreateGroupModal({ isOpen, onClose }: CreateGroupModalProps) {
 
                         <div
                           className={`w-5 h-5 rounded-md flex items-center justify-center border transition-all ${isSelected
-                              ? 'bg-indigo-600 border-indigo-500 text-white'
-                              : 'border-slate-700 bg-slate-800 text-transparent hover:border-slate-500'
+                            ? 'bg-indigo-600 border-indigo-500 text-white'
+                            : 'border-slate-700 bg-slate-800 text-transparent hover:border-slate-500'
                             }`}
                         >
                           <Check className="w-3.5 h-3.5" />
@@ -241,7 +241,7 @@ export function CreateGroupModal({ isOpen, onClose }: CreateGroupModalProps) {
             <button
               type="submit"
               disabled={isSubmitting || !groupName.trim() || selectedUsers.length === 0}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

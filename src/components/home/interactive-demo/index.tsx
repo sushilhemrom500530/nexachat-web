@@ -147,20 +147,18 @@ export function InteractiveDemo() {
               className={`flex ${isMe ? 'justify-end' : 'justify-start'} animate-fadeIn`}
             >
               <div
-                className={`max-w-[78%] rounded-2xl p-3 text-xs leading-relaxed shadow-sm ${
-                  isMe
-                    ? 'bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white rounded-tr-xs shadow-indigo-600/20'
-                    : 'bg-slate-800/90 text-slate-200 border border-slate-700/60 rounded-tl-xs'
-                }`}
+                className={`max-w-[78%] rounded-2xl p-3 text-xs leading-relaxed shadow-sm ${isMe
+                  ? 'bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white rounded-tr-xs shadow-indigo-600/20'
+                  : 'bg-slate-800/90 text-slate-200 border border-slate-700/60 rounded-tl-xs'
+                  }`}
               >
                 {!isMe && (
                   <p className="text-[10px] font-bold text-indigo-400 mb-1">Ada Lovelace</p>
                 )}
                 <p>{m.text}</p>
                 <div
-                  className={`flex items-center justify-end gap-1 mt-1 text-[9px] ${
-                    isMe ? 'text-indigo-200' : 'text-slate-400'
-                  }`}
+                  className={`flex items-center justify-end gap-1 mt-1 text-[9px] ${isMe ? 'text-indigo-200' : 'text-slate-400'
+                    }`}
                 >
                   <span>{m.time}</span>
                   {isMe && <CheckCheck className="w-3 h-3 text-indigo-200" />}
@@ -188,7 +186,7 @@ export function InteractiveDemo() {
       {/* Input Bar */}
       <form
         onSubmit={handleSend}
-        className="p-3 bg-slate-950/80 border-t border-slate-800 flex items-center gap-2"
+        className="p-3 bg-slate-950/80 border-t border-t-slate-800 flex items-center gap-2"
       >
         <input
           type="text"

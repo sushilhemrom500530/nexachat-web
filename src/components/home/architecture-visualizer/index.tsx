@@ -5,7 +5,7 @@ import { Smartphone, ShieldCheck, RefreshCw } from 'lucide-react';
 
 export function ArchitectureVisualizer() {
   return (
-    <section id="architecture" className="py-20 md:py-28 border-t border-slate-850 bg-slate-950 relative">
+    <section id="architecture" className="py-20 md:py-28 border-t border-t-slate-800 bg-slate-950 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs uppercase font-mono tracking-widest font-semibold text-purple-400">
