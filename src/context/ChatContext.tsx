@@ -40,7 +40,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
   const [isLoadingMessages, setIsLoadingMessages] = useState<boolean>(false);
   const [isSending, setIsSending] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Smart auto-scroll state
   const [isAtBottom, setIsAtBottom] = useState<boolean>(true);
   const [scrolledUpUnreadCount, setScrolledUpUnreadCount] = useState<number>(0);
@@ -95,7 +95,7 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     try {
       const res = await api.getMessages(conversationId);
       const fetchedMessages = Array.isArray(res) ? res : res.data || [];
-      
+
       // Sort oldest to newest
       const sorted = [...fetchedMessages].sort(
         (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
@@ -129,8 +129,10 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     if (!token) return;
 
     // Handle new incoming message
-    const unsubMessage = socketService.onNewMessage((newMessage: Message) => {
-      const convId = newMessage.conversationId;
+    const unsubMessage = socketService.onNewMessage((newMessage: Message & { conversation?: string }) => {
+      const convId = newMessage.conversationId || newMessage.conversation || '';
+      if (!convId) return;
+
       const currentActive = activeConvRef.current;
       const senderId = typeof newMessage.sender === 'object' ? newMessage.sender._id : newMessage.sender;
       const isMyMessage = senderId === user?._id;
@@ -142,11 +144,13 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
         if (existing.some((m) => m._id === newMessage._id)) {
           return prev;
         }
-        // Remove optimistic version if any
-        const filtered = existing.filter((m) => !m.isOptimistic || m.text !== newMessage.text);
+        // Remove optimistic temporary version if any
+        const filtered = existing.filter(
+          (m) => !(m.isOptimistic && m.text === newMessage.text)
+        );
         return {
           ...prev,
-          [convId]: [...filtered, newMessage],
+          [convId]: [...filtered, { ...newMessage, conversationId: convId }],
         };
       });
 
@@ -283,20 +287,29 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     setIsSending(true);
 
     try {
-      // Send via REST API (also triggers socket on server)
-      const sentMsg = await api.sendMessage(convId, trimmed);
-
-      // Replace optimistic message with real message
-      setMessagesMap((prev) => {
-        const list = prev[convId] || [];
-        return {
-          ...prev,
-          [convId]: list.map((m) => (m._id === tempId ? { ...sentMsg, status: 'sent' } : m)),
-        };
-      });
+      // Prioritize Socket.io connection when active
+      if (socketService.isConnected()) {
+        await socketService.sendMessage(convId, trimmed);
+        setMessagesMap((prev) => {
+          const list = prev[convId] || [];
+          return {
+            ...prev,
+            [convId]: list.map((m) => (m._id === tempId ? { ...m, status: 'sent' } : m)),
+          };
+        });
+      } else {
+        // Fallback to REST API
+        const sentMsg = await api.sendMessage(convId, trimmed);
+        setMessagesMap((prev) => {
+          const list = prev[convId] || [];
+          return {
+            ...prev,
+            [convId]: list.map((m) => (m._id === tempId ? { ...sentMsg, status: 'sent' } : m)),
+          };
+        });
+      }
     } catch (err: unknown) {
       console.error('Failed to send message:', err);
-      // Mark optimistic message as error
       setMessagesMap((prev) => {
         const list = prev[convId] || [];
         return {

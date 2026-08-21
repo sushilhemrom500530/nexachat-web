@@ -49,6 +49,10 @@ class SocketService {
     }
   }
 
+  isConnected(): boolean {
+    return Boolean(this.socket && this.socket.connected);
+  }
+
   getSocket(): Socket | null {
     return this.socket;
   }
@@ -69,12 +73,18 @@ class SocketService {
     };
   }
 
-  sendMessage(conversationId: string, text: string, callback?: (response: unknown) => void) {
-    if (!this.socket || !this.socket.connected) {
-      return false;
-    }
-    this.socket.emit('message:send', { conversationId, text }, callback);
-    return true;
+  sendMessage(conversationId: string, text: string): Promise<boolean> {
+    return new Promise((resolve) => {
+      if (!this.socket || !this.socket.connected) {
+        resolve(false);
+        return;
+      }
+      this.socket.emit('message:send', { conversationId, text }, (ack: { ok?: boolean } | undefined) => {
+        resolve(Boolean(ack?.ok !== false));
+      });
+      // Safety timeout after 2.5 seconds
+      setTimeout(() => resolve(true), 2500);
+    });
   }
 }
 

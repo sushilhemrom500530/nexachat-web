@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async rewrites() {
+    return [
+      {
+        source: '/backend-api/:path*',
+        destination: 'https://frontend-task-chatapp.onrender.com/api/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

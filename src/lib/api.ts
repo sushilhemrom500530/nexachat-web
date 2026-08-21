@@ -1,7 +1,7 @@
 import { AuthResponse, Conversation, Message, MessagesResponse, User } from '@/types';
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://frontend-task-chatapp.onrender.com/api';
-export const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || 'https://frontend-task-chatapp.onrender.com';
+export const API_BASE_URL = 'https://frontend-task-chatapp.onrender.com/api';
+export const SOCKET_URL = 'https://frontend-task-chatapp.onrender.com';
 
 class ApiClient {
   private getHeaders(): HeadersInit {
@@ -143,10 +143,15 @@ class ApiClient {
   }
 
   async sendMessage(conversationId: string, text: string): Promise<Message> {
-    return this.request<Message>('/messages', {
+    const res = await this.request<Message & { conversation?: string }>('/messages', {
       method: 'POST',
       body: JSON.stringify({ conversationId, text }),
     });
+
+    return {
+      ...res,
+      conversationId: res.conversationId || res.conversation || conversationId,
+    };
   }
 }
 

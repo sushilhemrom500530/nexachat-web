@@ -1,0 +1,114 @@
+# NexaChat — Production-Grade Web Application Implementation Plan
+
+## Overview
+A high-performance, real-time messaging application built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Socket.io**. Designed for instant 1-to-1 direct messaging, dynamic group collaboration, smart auto-scroll UX, and showcased via an interactive product landing page.
+
+---
+
+## 🏛️ System Architecture
+
+```
+                               ┌────────────────────────────────┐
+                               │     Next.js 16 (App Router)    │
+                               └───────────────┬────────────────┘
+                                               │
+               ┌───────────────────────────────┴───────────────────────────────┐
+               ▼                                                               ▼
+    ┌─────────────────────┐                                         ┌─────────────────────┐
+    │  Creative Landing   │                                         │    Chat Web App     │
+    │  Page (/ route)     │                                         │   (/chat route)     │
+    └─────────────────────┘                                         └──────────┬──────────┘
+                                                                               │
+                          ┌────────────────────────────┬───────────────────────┴────────────────────────────┐
+                          ▼                            ▼                                                    ▼
+               ┌─────────────────────┐      ┌─────────────────────┐                              ┌─────────────────────┐
+               │    Auth Context     │      │     Chat Context    │                              │  Socket.io Manager  │
+               │  - Token Storage    │      │  - Conversations    │                              │  - Auto-reconnect   │
+               │  - /auth/me verify  │      │  - Message History  │                              │  - message:new      │
+               │  - Auto-login       │      │  - Smart Scrolling  │                              │  - conv:updated     │
+               └─────────────────────┘      └─────────────────────┘                              └─────────────────────┘
+```
+
+---
+
+## 📁 Directory & Component Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx                # Root layout with fonts, theme & global providers
+│   ├── globals.css               # Design tokens, custom scrollbars, animations
+│   ├── page.tsx                  # Part 2: Creative Product Landing Page
+│   └── chat/
+│       └── page.tsx              # Part 1: Full-featured Chat Application Screen
+├── context/
+│   ├── AuthContext.tsx           # Session management, JWT persistence, user profile
+│   └── ChatContext.tsx           # Global chat state, real-time message dispatcher, unread tracking
+├── lib/
+│   ├── api.ts                    # REST API client with interceptors, error normalizing & endpoints
+│   ├── socket.ts                 # Socket.io connection instance & event listeners
+│   └── utils.ts                  # Date formatting, avatar color generator, scroll helpers
+├── types/
+│   └── index.ts                  # TypeScript interfaces (User, Conversation, Message, Group, Events)
+└── components/
+    ├── auth/
+    │   └── LoginModal.tsx        # Phone & Name auto-register login card
+    ├── chat/
+    │   ├── Sidebar.tsx           # Left panel: user info, search bar, conversation tabs
+    │   ├── ConversationItem.tsx  # Direct & Group list item with active state & unread badge
+    │   ├── ChatArea.tsx          # Main chat container with header, feed & input
+    │   ├── ChatHeader.tsx        # Participant info, online indicator, group options trigger
+    │   ├── MessageList.tsx       # Message feed with sender/receiver visual distinction & dates
+    │   ├── MessageBubble.tsx     # Message bubble with status, sender label, formatted time
+    │   ├── MessageInput.tsx      # Multi-line input, empty-state guard, instant send
+    │   ├── SmartScrollPill.tsx   # "↓ New Messages" floating anchor when scrolled up
+    │   ├── SearchUserModal.tsx   # Debounced live user search and start 1-to-1 conversation
+    │   ├── CreateGroupModal.tsx  # Multi-select participant picker with name input
+    │   └── GroupInfoDrawer.tsx   # Group management: add members, promote admin, rename, leave
+    ├── common/
+    │   ├── Avatar.tsx            # Gradient initial avatar with online indicator
+    │   ├── Skeleton.tsx          # Shimmer loading placeholders for conversations & messages
+    │   ├── EmptyState.tsx        # Clean illustration & copy for empty conversation / no chat selected
+    │   └── ErrorBanner.tsx       # Network / API error notice with retry CTA
+    └── landing/
+        ├── LandingNavbar.tsx     # Brand logo, feature links, CTA button
+        ├── HeroSection.tsx       # Bold headline, badges, interactive floating UI cards
+        ├── InteractiveDemo.tsx   # Real-time interactive playground previewing chat interactions
+        ├── FeatureGrid.tsx       # Showcase of Direct Chat, Groups, Real-time & Smart Scroll
+        ├── TechPillars.tsx       # Production-grade architecture & tech stack display
+        └── LandingFooter.tsx     # Footer links, attribution & status
+```
+
+---
+
+## ⚡ Key Implementation Highlights
+
+### 1. Robust Real-Time Synchronization (Socket.io)
+- Single connection lifecycle tied to authenticated user token.
+- Listens to `message:new` for instantaneous incoming messages.
+- Listens to `conversation:updated` for live group modifications (member additions, renames).
+- Automatic REST fallback and optimistic message rendering.
+
+### 2. Smart UX Auto-Scroll (Non-Intrusive)
+- Monitors `scrollTop` and `scrollHeight`.
+- If the user is near the bottom (< 120px threshold), auto-scrolls down seamlessly on new incoming message.
+- If the user is scrolled up browsing past history, auto-scroll is paused and a sleek floating pill **"↓ New Messages"** appears with an unread count badge. Clicking the pill smoothly scrolls to the latest message.
+
+### 3. Production-Ready Error & Loading Handling
+- Shimmer skeletons while fetching conversations and message threads.
+- Comprehensive fallback UI for empty message history or no active conversation.
+- Structured API response normalization (handling various backend return shapes without crashing).
+- Form validation: disabling message sending for whitespace-only strings.
+
+---
+
+## 🚀 Execution Steps
+
+1. **Step 1:** Establish TypeScript definitions (`src/types/index.ts`) and HTTP API Client (`src/lib/api.ts`).
+2. **Step 2:** Build Authentication Context (`AuthContext.tsx`) and Login UI (`LoginModal.tsx`).
+3. **Step 3:** Implement Chat Context (`ChatContext.tsx`) with Socket.io integration (`src/lib/socket.ts`).
+4. **Step 4:** Build the Chat Workspace:
+   - Sidebar (`Sidebar.tsx`, `ConversationItem.tsx`, `SearchUserModal.tsx`, `CreateGroupModal.tsx`).
+   - Chat View (`ChatArea.tsx`, `MessageList.tsx`, `MessageBubble.tsx`, `MessageInput.tsx`, `SmartScrollPill.tsx`, `GroupInfoDrawer.tsx`).
+5. **Step 5:** Build the Creative Product Landing Page (`/` route) showcasing features and interactive demo.
+6. **Step 6:** Verification, responsive testing, and finalizing the Part 3 Thought Process Write-up in `README.md`.
