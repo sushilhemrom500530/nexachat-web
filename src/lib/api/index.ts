@@ -1,7 +1,19 @@
 import { AuthResponse, Conversation, Message, MessagesResponse, User } from '@/types';
 
-export const API_BASE_URL = 'https://frontend-task-chatapp.onrender.com/api';
-export const SOCKET_URL = 'https://frontend-task-chatapp.onrender.com';
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  process.env.NEXT_API_BASE_URL ||
+  'https://frontend-task-chatapp.onrender.com/api';
+
+export const SOCKET_URL =
+  process.env.NEXT_PUBLIC_SOCKET_URL ||
+  process.env.NEXT_SOCKET_URL ||
+  'https://frontend-task-chatapp.onrender.com';
+
+export const DOCS_URL =
+  process.env.NEXT_PUBLIC_DOCS_URL ||
+  process.env.NEXT_DOCS_URL ||
+  'https://frontend-task-chatapp.onrender.com/docs/';
 
 class ApiClient {
   private getHeaders(): HeadersInit {

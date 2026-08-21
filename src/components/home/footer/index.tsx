@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { MessageSquare, Code2, BookOpen } from 'lucide-react';
+import { DOCS_URL } from '@/lib';
 
 export function HomeFooter() {
   return (
@@ -23,7 +24,7 @@ export function HomeFooter() {
             Chat App
           </Link>
           <a
-            href="https://frontend-task-chatapp.onrender.com/docs/"
+            href={DOCS_URL}
             target="_blank"
             rel="noreferrer"
             className="hover:text-white transition-colors flex items-center gap-1"

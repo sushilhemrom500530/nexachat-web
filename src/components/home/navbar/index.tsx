@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { MessageSquare, Menu, X, ArrowRight, BookOpen, Layers, Zap, Cpu } from 'lucide-react';
 import { useAuth } from '@/context';
+import { DOCS_URL } from '@/lib';
 
 export function HomeNavbar() {
   const { user } = useAuth();
@@ -39,7 +40,7 @@ export function HomeNavbar() {
             Architecture
           </a>
           <a
-            href="https://frontend-task-chatapp.onrender.com/docs/"
+            href={DOCS_URL}
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-1 hover:text-indigo-400 transition-colors"
@@ -99,7 +100,7 @@ export function HomeNavbar() {
               <span>System Architecture</span>
             </a>
             <a
-              href="https://frontend-task-chatapp.onrender.com/docs/"
+              href={DOCS_URL}
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileMenuOpen(false)}

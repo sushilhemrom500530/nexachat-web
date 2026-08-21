@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { MessageSquare, Home, BookOpen } from 'lucide-react';
+import { DOCS_URL } from '@/lib';
 
 export default function NotFound() {
   return (
@@ -56,7 +57,7 @@ export default function NotFound() {
           </Link>
           <span className="text-slate-700">•</span>
           <a
-            href="https://frontend-task-chatapp.onrender.com/docs/"
+            href={DOCS_URL}
             target="_blank"
             rel="noreferrer"
             className="hover:text-indigo-400 transition-colors flex items-center gap-1"
