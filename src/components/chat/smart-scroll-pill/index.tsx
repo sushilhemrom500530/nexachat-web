@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 
 interface SmartScrollPillProps {
   visible: boolean;

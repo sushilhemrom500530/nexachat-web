@@ -42,12 +42,19 @@ src/
 │   └── chat/
 │       └── page.tsx              # Part 1: Full-featured Chat Application Screen
 ├── context/
-│   ├── AuthContext.tsx           # Session management, JWT persistence, user profile
-│   └── ChatContext.tsx           # Global chat state, real-time message dispatcher, unread tracking
+│   ├── auth/
+│   │   └── index.tsx             # Session management, JWT persistence, user profile
+│   ├── chat/
+│   │   └── index.tsx             # Global chat state, real-time message dispatcher
+│   └── index.ts                  # Barrel export for context hooks
 ├── lib/
-│   ├── api.ts                    # REST API client with interceptors, error normalizing & endpoints
-│   ├── socket.ts                 # Socket.io connection instance & event listeners
-│   └── utils.ts                  # Date formatting, avatar color generator, scroll helpers
+│   ├── api/
+│   │   └── index.ts              # REST API client with interceptors & endpoints
+│   ├── socket/
+│   │   └── index.ts              # Socket.io connection instance & event listeners
+│   ├── utils/
+│   │   └── index.ts              # Date formatting, avatar color generator, scroll helpers
+│   └── index.ts                  # Barrel export for lib utilities
 ├── types/
 │   └── index.ts                  # TypeScript interfaces (User, Conversation, Message, Group, Events)
 └── components/

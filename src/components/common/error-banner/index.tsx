@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { AlertCircle, RotateCcw, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 
 interface ErrorBannerProps {
   message: string;

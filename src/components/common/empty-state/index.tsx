@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MessageSquareDashed, MessageSquarePlus, Users, Search } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 
 interface EmptyStateProps {
   type: 'no-conversation-selected' | 'no-messages' | 'no-conversations' | 'no-search-results';

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Message } from '@/types';
-import { useAuth } from '@/context/AuthContext';
-import { formatMessageTime, cn } from '@/lib/utils';
+import { useAuth } from '@/context';
+import { formatMessageTime, cn } from '@/lib';
 import { CheckCheck, Clock, AlertCircle } from 'lucide-react';
 
 interface MessageBubbleProps {

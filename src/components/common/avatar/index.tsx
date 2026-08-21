@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { getAvatarGradient, getInitials, cn } from '@/lib/utils';
+import { getAvatarGradient, getInitials, cn } from '@/lib';
 import { Users } from 'lucide-react';
 
 interface AvatarProps {

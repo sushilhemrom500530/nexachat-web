@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useChat } from '@/context/ChatContext';
+import { useChat } from '@/context';
 import { ChatHeader } from '../chat-header';
 import { MessageList } from '../message-list';
 import { MessageInput } from '../message-input';

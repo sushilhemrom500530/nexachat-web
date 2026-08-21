@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import { Conversation, User } from '@/types';
-import { useAuth } from '@/context/AuthContext';
-import { useChat } from '@/context/ChatContext';
-import { api } from '@/lib/api';
+import { useAuth, useChat } from '@/context';
+import { api } from '@/lib';
 import { Avatar, ErrorBanner } from '@/components/common';
 import {
   X,

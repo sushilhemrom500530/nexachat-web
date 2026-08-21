@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { Conversation } from '@/types';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context';
 import { Avatar } from '@/components/common';
-import { formatConversationTime, cn } from '@/lib/utils';
+import { formatConversationTime, cn } from '@/lib';
 import { CheckCheck } from 'lucide-react';
 
 interface ConversationItemProps {

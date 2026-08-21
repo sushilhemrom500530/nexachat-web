@@ -2,8 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User } from '@/types';
-import { api } from '@/lib/api';
-import { socketService } from '@/lib/socket';
+import { api, socketService } from '@/lib';
 
 interface AuthContextType {
   user: User | null;

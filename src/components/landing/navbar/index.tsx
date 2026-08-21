@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { MessageSquare, Menu, X, ArrowRight, BookOpen, Layers, Zap, Cpu } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context';
 
 export function LandingNavbar() {
   const { user } = useAuth();

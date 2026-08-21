@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import { useChat } from '@/context/ChatContext';
+import { useAuth, useChat } from '@/context';
 import { Sidebar, ChatArea } from '@/components/chat';
 import { LoginModal } from '@/components/auth';
 import Link from 'next/link';

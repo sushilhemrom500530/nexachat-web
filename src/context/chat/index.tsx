@@ -2,9 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { Conversation, Message } from '@/types';
-import { api } from '@/lib/api';
-import { socketService } from '@/lib/socket';
-import { useAuth } from './AuthContext';
+import { api, socketService } from '@/lib';
+import { useAuth } from '../auth';
 
 interface ChatContextType {
   conversations: Conversation[];
@@ -287,7 +286,6 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     setIsSending(true);
 
     try {
-      // Prioritize Socket.io connection when active
       if (socketService.isConnected()) {
         await socketService.sendMessage(convId, trimmed);
         setMessagesMap((prev) => {
@@ -298,7 +296,6 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
           };
         });
       } else {
-        // Fallback to REST API
         const sentMsg = await api.sendMessage(convId, trimmed);
         setMessagesMap((prev) => {
           const list = prev[convId] || [];

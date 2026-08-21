@@ -3,10 +3,10 @@
 import React, { useRef, useEffect, UIEvent } from 'react';
 import { Message, Conversation } from '@/types';
 import { MessageBubble } from '../message-bubble';
-import { formatDateDivider } from '@/lib/utils';
+import { formatDateDivider } from '@/lib';
 import { MessagesFeedSkeleton, EmptyState } from '@/components/common';
 import { SmartScrollPill } from '../smart-scroll-pill';
-import { useChat } from '@/context/ChatContext';
+import { useChat } from '@/context';
 
 interface MessageListProps {
   conversation: Conversation;

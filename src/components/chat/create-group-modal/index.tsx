@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Users, X, Check, Loader2, Search, Plus } from 'lucide-react';
-import { api } from '@/lib/api';
+import { api } from '@/lib';
 import { User } from '@/types';
-import { useChat } from '@/context/ChatContext';
-import { useAuth } from '@/context/AuthContext';
+import { useChat, useAuth } from '@/context';
 import { Avatar, ErrorBanner } from '@/components/common';
 
 interface CreateGroupModalProps {

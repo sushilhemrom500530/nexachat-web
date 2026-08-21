@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { useChat } from '@/context/ChatContext';
-import { useAuth } from '@/context/AuthContext';
+import { useChat, useAuth } from '@/context';
 import { ConversationItem } from '../conversation-item';
 import { Avatar, ConversationListSkeleton, EmptyState } from '@/components/common';
 import {
