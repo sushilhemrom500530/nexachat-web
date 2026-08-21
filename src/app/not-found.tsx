@@ -2,33 +2,25 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { MessageSquare, ArrowLeft, Home, Compass, BookOpen } from 'lucide-react';
+import { MessageSquare, Home, BookOpen } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 relative overflow-hidden text-slate-100 selection:bg-indigo-500 selection:text-white select-none">
-      {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/20 via-purple-600/15 to-pink-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-10 right-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      {/* Ambient Background Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-indigo-600/15 via-purple-600/15 to-transparent blur-[130px] rounded-full pointer-events-none -z-10" />
 
-      {/* Main Glass Card */}
-      <div className="relative w-full max-w-lg bg-slate-900/80 border border-slate-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-indigo-950/60 backdrop-blur-2xl text-center overflow-hidden">
-        {/* Top Glow Highlights */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent" />
-
-        {/* 404 Error Graphic / Icon */}
-        <div className="relative mb-6 inline-block">
-          <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mx-auto shadow-inner ring-4 ring-indigo-500/10">
-            <Compass className="w-10 h-10 stroke-[1.75] text-indigo-400 animate-spin-slow" />
-          </div>
-          <span className="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full bg-indigo-600 text-[11px] font-mono font-bold text-white shadow-md shadow-indigo-600/50 border border-indigo-400/40">
+      {/* Main Card */}
+      <div className="relative w-full max-w-lg bg-slate-900/90 border border-slate-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-indigo-950/50 backdrop-blur-xl text-center overflow-hidden">
+        {/* Prominent 404 Text */}
+        <div className="mb-4">
+          <span className="text-6xl sm:text-7xl font-black bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight">
             404
           </span>
         </div>
 
         {/* Headline & Description */}
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3">
           Page Not Found
         </h1>
         <p className="text-sm text-slate-400 leading-relaxed max-w-sm mx-auto mb-8 font-normal">
