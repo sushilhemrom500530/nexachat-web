@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { Conversation } from '@/types';
-import { Avatar } from '@/components/common/Avatar';
-import { Info, ArrowLeft, Users, ShieldCheck, MoreVertical } from 'lucide-react';
-import { GroupInfoDrawer } from './GroupInfoDrawer';
+import { Avatar } from '@/components/common';
+import { ArrowLeft, Users, ShieldCheck } from 'lucide-react';
+import { GroupInfoDrawer } from '../group-info-drawer';
 
 interface ChatHeaderProps {
   conversation: Conversation;

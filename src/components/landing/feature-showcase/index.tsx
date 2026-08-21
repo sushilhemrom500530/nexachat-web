@@ -6,8 +6,6 @@ import {
   Users,
   Radio,
   ArrowDown,
-  ShieldCheck,
-  Sparkles,
   Smartphone,
   Layers,
 } from 'lucide-react';

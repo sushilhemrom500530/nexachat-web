@@ -12,6 +12,22 @@ interface AvatarProps {
   className?: string;
 }
 
+const sizeClasses = {
+  xs: 'w-6 h-6 text-[10px]',
+  sm: 'w-8 h-8 text-xs',
+  md: 'w-10 h-10 text-sm font-semibold',
+  lg: 'w-12 h-12 text-base font-semibold',
+  xl: 'w-16 h-16 text-lg font-bold',
+};
+
+const indicatorSizes = {
+  xs: 'w-2 h-2 border',
+  sm: 'w-2.5 h-2.5 border-[1.5px]',
+  md: 'w-3 h-3 border-2',
+  lg: 'w-3.5 h-3.5 border-2',
+  xl: 'w-4 h-4 border-2',
+};
+
 export function Avatar({
   name,
   isGroup = false,
@@ -19,22 +35,6 @@ export function Avatar({
   showOnline = false,
   className,
 }: AvatarProps) {
-  const sizeClasses = {
-    xs: 'w-6 h-6 text-[10px]',
-    sm: 'w-8 h-8 text-xs',
-    md: 'w-10 h-10 text-sm font-semibold',
-    lg: 'w-12 h-12 text-base font-semibold',
-    xl: 'w-16 h-16 text-lg font-bold',
-  };
-
-  const indicatorSizes = {
-    xs: 'w-2 h-2 border',
-    sm: 'w-2.5 h-2.5 border-[1.5px]',
-    md: 'w-3 h-3 border-2',
-    lg: 'w-3.5 h-3.5 border-2',
-    xl: 'w-4 h-4 border-2',
-  };
-
   if (isGroup) {
     return (
       <div className="relative inline-block flex-shrink-0">

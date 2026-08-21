@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { SendHorizontal, Loader2, Smile } from 'lucide-react';
+import { SendHorizontal, Loader2 } from 'lucide-react';
 
 interface MessageInputProps {
   onSendMessage: (text: string) => Promise<void>;
@@ -40,7 +40,6 @@ export function MessageInput({
     try {
       await onSendMessage(trimmed);
     } catch {
-      // Restore text if sending failed
       setText(trimmed);
     }
   };

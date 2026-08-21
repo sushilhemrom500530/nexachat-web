@@ -13,6 +13,29 @@ interface EmptyStateProps {
   className?: string;
 }
 
+const configs = {
+  'no-conversation-selected': {
+    icon: MessageSquareDashed,
+    defaultTitle: 'Select a conversation',
+    defaultDesc: 'Choose an existing conversation from the sidebar or start a new chat with a friend or colleague.',
+  },
+  'no-messages': {
+    icon: MessageSquarePlus,
+    defaultTitle: 'No messages yet',
+    defaultDesc: 'Say hello and start the conversation! New messages will appear in real-time.',
+  },
+  'no-conversations': {
+    icon: Users,
+    defaultTitle: 'No conversations found',
+    defaultDesc: 'You have not joined any conversations yet. Search for users or create a new group.',
+  },
+  'no-search-results': {
+    icon: Search,
+    defaultTitle: 'No users found',
+    defaultDesc: 'We couldn’t find anyone matching your search query. Try searching with a different name or phone number.',
+  },
+};
+
 export function EmptyState({
   type,
   title,
@@ -21,29 +44,6 @@ export function EmptyState({
   onAction,
   className,
 }: EmptyStateProps) {
-  const configs = {
-    'no-conversation-selected': {
-      icon: MessageSquareDashed,
-      defaultTitle: 'Select a conversation',
-      defaultDesc: 'Choose an existing conversation from the sidebar or start a new chat with a friend or colleague.',
-    },
-    'no-messages': {
-      icon: MessageSquarePlus,
-      defaultTitle: 'No messages yet',
-      defaultDesc: 'Say hello and start the conversation! New messages will appear in real-time.',
-    },
-    'no-conversations': {
-      icon: Users,
-      defaultTitle: 'No conversations found',
-      defaultDesc: 'You have not joined any conversations yet. Search for users or create a new group.',
-    },
-    'no-search-results': {
-      icon: Search,
-      defaultTitle: 'No users found',
-      defaultDesc: 'We couldn’t find anyone matching your search query. Try searching with a different name or phone number.',
-    },
-  };
-
   const config = configs[type];
   const IconComponent = config.icon;
 

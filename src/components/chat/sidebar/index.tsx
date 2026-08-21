@@ -3,22 +3,19 @@
 import React, { useState, useMemo } from 'react';
 import { useChat } from '@/context/ChatContext';
 import { useAuth } from '@/context/AuthContext';
-import { ConversationItem } from './ConversationItem';
-import { Avatar } from '@/components/common/Avatar';
-import { ConversationListSkeleton } from '@/components/common/Skeleton';
-import { EmptyState } from '@/components/common/EmptyState';
+import { ConversationItem } from '../conversation-item';
+import { Avatar, ConversationListSkeleton, EmptyState } from '@/components/common';
 import {
   Search,
   Plus,
   UserPlus,
   LogOut,
-  Sparkles,
   Users,
   MessageCircle,
   Layers,
 } from 'lucide-react';
-import { SearchUserModal } from './SearchUserModal';
-import { CreateGroupModal } from './CreateGroupModal';
+import { SearchUserModal } from '../search-user-modal';
+import { CreateGroupModal } from '../create-group-modal';
 
 interface SidebarProps {
   onSelectConversation?: () => void;
@@ -42,11 +39,9 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
   // Filter conversations
   const filteredConversations = useMemo(() => {
     return conversations.filter((c) => {
-      // Tab filter
       if (activeTab === 'direct' && c.type !== 'direct') return false;
       if (activeTab === 'group' && c.type !== 'group') return false;
 
-      // Text query filter
       if (!searchFilter.trim()) return true;
       const title =
         c.type === 'group'

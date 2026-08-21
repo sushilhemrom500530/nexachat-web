@@ -6,8 +6,7 @@ import { api } from '@/lib/api';
 import { User } from '@/types';
 import { useChat } from '@/context/ChatContext';
 import { useAuth } from '@/context/AuthContext';
-import { Avatar } from '@/components/common/Avatar';
-import { ErrorBanner } from '@/components/common/ErrorBanner';
+import { Avatar, ErrorBanner } from '@/components/common';
 
 interface CreateGroupModalProps {
   isOpen: boolean;
@@ -25,24 +24,26 @@ export function CreateGroupModal({ isOpen, onClose }: CreateGroupModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const searchUsers = useCallback(async (query: string) => {
-    if (!query.trim()) {
-      setSearchResults([]);
-      setIsLoadingSearch(false);
-      return;
-    }
-    setIsLoadingSearch(true);
-    try {
-      const users = await api.searchUsers(query);
-      // Filter out self
-      const filtered = users.filter((u) => u._id !== currentUser?._id);
-      setSearchResults(filtered);
-    } catch {
-      // Ignore background search error
-    } finally {
-      setIsLoadingSearch(false);
-    }
-  }, [currentUser?._id]);
+  const searchUsers = useCallback(
+    async (query: string) => {
+      if (!query.trim()) {
+        setSearchResults([]);
+        setIsLoadingSearch(false);
+        return;
+      }
+      setIsLoadingSearch(true);
+      try {
+        const users = await api.searchUsers(query);
+        const filtered = users.filter((u) => u._id !== currentUser?._id);
+        setSearchResults(filtered);
+      } catch {
+        // Ignore background search error
+      } finally {
+        setIsLoadingSearch(false);
+      }
+    },
+    [currentUser?._id]
+  );
 
   useEffect(() => {
     if (!isOpen) {

@@ -3,15 +3,14 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useChat } from '@/context/ChatContext';
-import { Sidebar } from '@/components/chat/Sidebar';
-import { ChatArea } from '@/components/chat/ChatArea';
-import { LoginModal } from '@/components/auth/LoginModal';
+import { Sidebar, ChatArea } from '@/components/chat';
+import { LoginModal } from '@/components/auth';
 import Link from 'next/link';
-import { MessageSquare, Sparkles, ExternalLink, Globe } from 'lucide-react';
+import { MessageSquare, Globe } from 'lucide-react';
 
 function ChatWorkspace() {
   const { user, isLoading } = useAuth();
-  const { activeConversation, selectConversation } = useChat();
+  const { activeConversation } = useChat();
   const [mobileView, setMobileView] = useState<'sidebar' | 'chat'>('sidebar');
 
   if (isLoading) {

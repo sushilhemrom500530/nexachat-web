@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { MessageSquare, Phone, User as UserIcon, ArrowRight, Loader2, Sparkles } from 'lucide-react';
-import { ErrorBanner } from '@/components/common/ErrorBanner';
+import { ErrorBanner } from '@/components/common';
 
 export function LoginModal({ isOpen = true }: { isOpen?: boolean }) {
   const { login, isLoading, error, clearError } = useAuth();

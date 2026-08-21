@@ -6,8 +6,7 @@ import { api } from '@/lib/api';
 import { User } from '@/types';
 import { useChat } from '@/context/ChatContext';
 import { useAuth } from '@/context/AuthContext';
-import { Avatar } from '@/components/common/Avatar';
-import { ErrorBanner } from '@/components/common/ErrorBanner';
+import { Avatar, ErrorBanner } from '@/components/common';
 
 interface SearchUserModalProps {
   isOpen: boolean;
@@ -24,26 +23,28 @@ export function SearchUserModal({ isOpen, onClose }: SearchUserModalProps) {
   const [error, setError] = useState<string | null>(null);
 
   // Debounced search
-  const performSearch = useCallback(async (searchTerm: string) => {
-    if (!searchTerm.trim()) {
-      setResults([]);
-      setIsLoading(false);
-      return;
-    }
+  const performSearch = useCallback(
+    async (searchTerm: string) => {
+      if (!searchTerm.trim()) {
+        setResults([]);
+        setIsLoading(false);
+        return;
+      }
 
-    setIsLoading(true);
-    setError(null);
-    try {
-      const users = await api.searchUsers(searchTerm);
-      // Filter out self
-      const filtered = users.filter((u) => u._id !== currentUser?._id);
-      setResults(filtered);
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'Failed to search users');
-    } finally {
-      setIsLoading(false);
-    }
-  }, [currentUser?._id]);
+      setIsLoading(true);
+      setError(null);
+      try {
+        const users = await api.searchUsers(searchTerm);
+        const filtered = users.filter((u) => u._id !== currentUser?._id);
+        setResults(filtered);
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Failed to search users');
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [currentUser?._id]
+  );
 
   useEffect(() => {
     if (!isOpen) {

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Terminal, Server, Smartphone, Cpu, ShieldCheck, Database, RefreshCw } from 'lucide-react';
+import { Smartphone, ShieldCheck, RefreshCw } from 'lucide-react';
 
 export function ArchitectureVisualizer() {
   return (

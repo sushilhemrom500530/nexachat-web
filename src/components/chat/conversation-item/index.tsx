@@ -3,7 +3,7 @@
 import React from 'react';
 import { Conversation } from '@/types';
 import { useAuth } from '@/context/AuthContext';
-import { Avatar } from '@/components/common/Avatar';
+import { Avatar } from '@/components/common';
 import { formatConversationTime, cn } from '@/lib/utils';
 import { CheckCheck } from 'lucide-react';
 
@@ -31,7 +31,10 @@ export function ConversationItem({
   // Determine last message text & sender
   const lastMsg = conversation.lastMessage;
   const lastMsgText = lastMsg?.text || (isGroup ? 'Group created' : 'No messages yet');
-  const lastMsgSenderId = typeof lastMsg?.sender === 'object' ? (lastMsg.sender as { _id: string })._id : lastMsg?.sender;
+  const lastMsgSenderId =
+    typeof lastMsg?.sender === 'object'
+      ? (lastMsg.sender as { _id: string })._id
+      : lastMsg?.sender;
   const isMyLastMsg = lastMsgSenderId === currentUser?._id;
 
   const timeString = formatConversationTime(

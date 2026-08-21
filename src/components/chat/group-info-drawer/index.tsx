@@ -5,7 +5,7 @@ import { Conversation, User } from '@/types';
 import { useAuth } from '@/context/AuthContext';
 import { useChat } from '@/context/ChatContext';
 import { api } from '@/lib/api';
-import { Avatar } from '@/components/common/Avatar';
+import { Avatar, ErrorBanner } from '@/components/common';
 import {
   X,
   Users,
@@ -16,9 +16,7 @@ import {
   Check,
   Loader2,
   Search,
-  Shield,
 } from 'lucide-react';
-import { ErrorBanner } from '@/components/common/ErrorBanner';
 
 interface GroupInfoDrawerProps {
   isOpen: boolean;
@@ -41,7 +39,9 @@ export function GroupInfoDrawer({ isOpen, onClose, conversation }: GroupInfoDraw
 
   if (!isOpen) return null;
 
-  const isAdmin = conversation.admins?.includes(currentUser?._id || '') || conversation.createdBy === currentUser?._id;
+  const isAdmin =
+    conversation.admins?.includes(currentUser?._id || '') ||
+    conversation.createdBy === currentUser?._id;
   const participants = conversation.participants || [];
 
   const handleRename = async () => {
@@ -53,7 +53,10 @@ export function GroupInfoDrawer({ isOpen, onClose, conversation }: GroupInfoDraw
     setError(null);
     try {
       const updated = await api.renameGroup(conversation._id, newGroupName.trim());
-      updateConversationInState({ _id: conversation._id, name: updated.name || newGroupName.trim() });
+      updateConversationInState({
+        _id: conversation._id,
+        name: updated.name || newGroupName.trim(),
+      });
       setIsEditingName(false);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Failed to rename group');
@@ -102,7 +105,6 @@ export function GroupInfoDrawer({ isOpen, onClose, conversation }: GroupInfoDraw
     setIsLoadingSearch(true);
     try {
       const users = await api.searchUsers(q.trim());
-      // Filter out existing participants
       const existingIds = new Set(participants.map((p) => p._id));
       setSearchResults(users.filter((u) => !existingIds.has(u._id)));
     } catch {
@@ -253,7 +255,8 @@ export function GroupInfoDrawer({ isOpen, onClose, conversation }: GroupInfoDraw
           {/* Participants List */}
           <div className="space-y-2">
             {participants.map((p) => {
-              const isMemberAdmin = conversation.admins?.includes(p._id) || conversation.createdBy === p._id;
+              const isMemberAdmin =
+                conversation.admins?.includes(p._id) || conversation.createdBy === p._id;
               const isMe = p._id === currentUser?._id;
 
               return (

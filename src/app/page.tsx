@@ -1,8 +1,10 @@
-import { LandingNavbar } from '@/components/landing/LandingNavbar';
-import { HeroSection } from '@/components/landing/HeroSection';
-import { FeatureShowcase } from '@/components/landing/FeatureShowcase';
-import { ArchitectureVisualizer } from '@/components/landing/ArchitectureVisualizer';
-import { LandingFooter } from '@/components/landing/LandingFooter';
+import {
+  LandingNavbar,
+  HeroSection,
+  FeatureShowcase,
+  ArchitectureVisualizer,
+  LandingFooter,
+} from '@/components/landing';
 
 export default function HomePage() {
   return (

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, Zap, Shield, Users, Radio, MessageSquare } from 'lucide-react';
-import { InteractiveDemoWidget } from './InteractiveDemoWidget';
+import { ArrowRight, Zap, Users, Radio } from 'lucide-react';
+import { InteractiveDemo } from '../interactive-demo';
 
 export function HeroSection() {
   return (
@@ -14,7 +14,7 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Feature Pill */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold backdrop-blur-md shadow-sm animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold backdrop-blur-md shadow-sm">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -80,7 +80,7 @@ export function HeroSection() {
             </h3>
             <h2 className="text-2xl font-bold text-white">Test the UX Engine Right Here</h2>
           </div>
-          <InteractiveDemoWidget />
+          <InteractiveDemo />
         </div>
       </div>
     </section>

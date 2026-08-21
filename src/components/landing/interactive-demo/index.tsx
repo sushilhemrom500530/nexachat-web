@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { Send, ArrowDown, Bot, Sparkles, CheckCheck, RefreshCw, Zap, Users } from 'lucide-react';
-import { Avatar } from '@/components/common/Avatar';
+import React, { useState, useRef } from 'react';
+import { Send, ArrowDown, CheckCheck, Zap } from 'lucide-react';
+import { Avatar } from '@/components/common';
 
 interface DemoMessage {
   id: string;
@@ -11,7 +11,7 @@ interface DemoMessage {
   time: string;
 }
 
-export function InteractiveDemoWidget() {
+export function InteractiveDemo() {
   const [messages, setMessages] = useState<DemoMessage[]>([
     {
       id: '1',

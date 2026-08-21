@@ -2,11 +2,10 @@
 
 import React, { useRef, useEffect, UIEvent } from 'react';
 import { Message, Conversation } from '@/types';
-import { MessageBubble } from './MessageBubble';
+import { MessageBubble } from '../message-bubble';
 import { formatDateDivider } from '@/lib/utils';
-import { MessagesFeedSkeleton } from '@/components/common/Skeleton';
-import { EmptyState } from '@/components/common/EmptyState';
-import { SmartScrollPill } from './SmartScrollPill';
+import { MessagesFeedSkeleton, EmptyState } from '@/components/common';
+import { SmartScrollPill } from '../smart-scroll-pill';
 import { useChat } from '@/context/ChatContext';
 
 interface MessageListProps {

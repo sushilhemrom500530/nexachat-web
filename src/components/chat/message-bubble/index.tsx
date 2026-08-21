@@ -4,7 +4,7 @@ import React from 'react';
 import { Message } from '@/types';
 import { useAuth } from '@/context/AuthContext';
 import { formatMessageTime, cn } from '@/lib/utils';
-import { Check, CheckCheck, Clock, AlertCircle } from 'lucide-react';
+import { CheckCheck, Clock, AlertCircle } from 'lucide-react';
 
 interface MessageBubbleProps {
   message: Message;
@@ -39,7 +39,7 @@ export function MessageBubble({ message, isGroup = false }: MessageBubbleProps) 
           'relative max-w-[85%] sm:max-w-[70%] md:max-w-[60%] rounded-2xl p-3 shadow-md transition-all',
           isMe
             ? 'bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white rounded-tr-xs shadow-indigo-600/20'
-            : 'bg-slate-850 bg-slate-900 border border-slate-800 text-slate-100 rounded-tl-xs shadow-black/40'
+            : 'bg-slate-900 border border-slate-800 text-slate-100 rounded-tl-xs shadow-black/40'
         )}
       >
         {/* Sender Name in Group Chat */}

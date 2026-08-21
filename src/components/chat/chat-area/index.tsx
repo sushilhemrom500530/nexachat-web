@@ -2,11 +2,10 @@
 
 import React from 'react';
 import { useChat } from '@/context/ChatContext';
-import { ChatHeader } from './ChatHeader';
-import { MessageList } from './MessageList';
-import { MessageInput } from './MessageInput';
-import { EmptyState } from '@/components/common/EmptyState';
-import { ErrorBanner } from '@/components/common/ErrorBanner';
+import { ChatHeader } from '../chat-header';
+import { MessageList } from '../message-list';
+import { MessageInput } from '../message-input';
+import { EmptyState, ErrorBanner } from '@/components/common';
 
 interface ChatAreaProps {
   onBackToSidebar?: () => void;
