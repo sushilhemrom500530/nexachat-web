@@ -20,7 +20,11 @@ import {
 import { SearchUserModal } from './SearchUserModal';
 import { CreateGroupModal } from './CreateGroupModal';
 
-export function Sidebar() {
+interface SidebarProps {
+  onSelectConversation?: () => void;
+}
+
+export function Sidebar({ onSelectConversation }: SidebarProps) {
   const { user, logout } = useAuth();
   const {
     conversations,
@@ -173,7 +177,10 @@ export function Sidebar() {
                 conversation={c}
                 isActive={activeConversation?._id === c._id}
                 unreadCount={unreadMap[c._id] || 0}
-                onClick={() => selectConversation(c)}
+                onClick={() => {
+                  selectConversation(c);
+                  onSelectConversation?.();
+                }}
               />
             ))
           ) : conversations.length === 0 ? (

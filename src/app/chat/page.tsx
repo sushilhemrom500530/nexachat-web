@@ -66,7 +66,11 @@ function ChatWorkspace() {
             activeConversation && mobileView === 'chat' ? 'hidden md:flex' : 'flex'
           }`}
         >
-          <Sidebar />
+          <Sidebar
+            onSelectConversation={() => {
+              setMobileView('chat');
+            }}
+          />
         </div>
 
         {/* Chat Panel */}

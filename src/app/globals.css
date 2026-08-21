@@ -12,6 +12,33 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Global button & interactive elements cursor behavior */
+button,
+[role="button"],
+a,
+summary,
+select {
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled],
+[role="button"][aria-disabled="true"],
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* Custom modern scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
