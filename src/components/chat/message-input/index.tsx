@@ -51,44 +51,11 @@ export function MessageInput({
     }
   };
 
-  const insertEmoji = (emoji: string) => {
-    setText((prev) => prev + emoji);
-    textareaRef.current?.focus();
-  };
-
   const canSend = Boolean(text.trim()) && !isSending && !disabled;
 
   return (
     <div className="p-3 md:p-4 bg-slate-950/80 border-t border-slate-800/80 backdrop-blur-xl select-none">
-      <div className="relative flex items-end gap-2 bg-slate-900/90 border border-slate-800/80 rounded-2xl p-2 focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-inner">
-        {/* Emoji Quick Picker */}
-        <div className="flex items-center gap-1 pl-1 pb-1 text-slate-400">
-          <button
-            type="button"
-            onClick={() => insertEmoji('👍')}
-            className="p-1 hover:text-white rounded hover:bg-slate-800 text-sm transition-colors"
-            title="Thumbs up"
-          >
-            👍
-          </button>
-          <button
-            type="button"
-            onClick={() => insertEmoji('🔥')}
-            className="p-1 hover:text-white rounded hover:bg-slate-800 text-sm transition-colors"
-            title="Fire"
-          >
-            🔥
-          </button>
-          <button
-            type="button"
-            onClick={() => insertEmoji('👋')}
-            className="p-1 hover:text-white rounded hover:bg-slate-800 text-sm transition-colors"
-            title="Wave"
-          >
-            👋
-          </button>
-        </div>
-
+      <div className="relative flex items-end gap-2 bg-slate-900/90 border border-slate-800/80 rounded-2xl px-3 py-2 focus-within:border-indigo-500/60 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all shadow-inner">
         {/* Text Area */}
         <textarea
           ref={textareaRef}
@@ -98,7 +65,7 @@ export function MessageInput({
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none resize-none max-h-36 py-1.5 px-2 leading-relaxed"
+          className="flex-1 bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none resize-none max-h-36 py-1.5 px-1 leading-relaxed"
         />
 
         {/* Send Button */}
