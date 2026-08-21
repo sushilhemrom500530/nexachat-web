@@ -58,32 +58,10 @@ src/
 ├── types/
 │   └── index.ts                  # TypeScript interfaces (User, Conversation, Message, Group, Events)
 └── components/
-    ├── auth/
-    │   └── LoginModal.tsx        # Phone & Name auto-register login card
-    ├── chat/
-    │   ├── Sidebar.tsx           # Left panel: user info, search bar, conversation tabs
-    │   ├── ConversationItem.tsx  # Direct & Group list item with active state & unread badge
-    │   ├── ChatArea.tsx          # Main chat container with header, feed & input
-    │   ├── ChatHeader.tsx        # Participant info, online indicator, group options trigger
-    │   ├── MessageList.tsx       # Message feed with sender/receiver visual distinction & dates
-    │   ├── MessageBubble.tsx     # Message bubble with status, sender label, formatted time
-    │   ├── MessageInput.tsx      # Multi-line input, empty-state guard, instant send
-    │   ├── SmartScrollPill.tsx   # "↓ New Messages" floating anchor when scrolled up
-    │   ├── SearchUserModal.tsx   # Debounced live user search and start 1-to-1 conversation
-    │   ├── CreateGroupModal.tsx  # Multi-select participant picker with name input
-    │   └── GroupInfoDrawer.tsx   # Group management: add members, promote admin, rename, leave
-    ├── common/
-    │   ├── Avatar.tsx            # Gradient initial avatar with online indicator
-    │   ├── Skeleton.tsx          # Shimmer loading placeholders for conversations & messages
-    │   ├── EmptyState.tsx        # Clean illustration & copy for empty conversation / no chat selected
-    │   └── ErrorBanner.tsx       # Network / API error notice with retry CTA
-    └── landing/
-        ├── LandingNavbar.tsx     # Brand logo, feature links, CTA button
-        ├── HeroSection.tsx       # Bold headline, badges, interactive floating UI cards
-        ├── InteractiveDemo.tsx   # Real-time interactive playground previewing chat interactions
-        ├── FeatureGrid.tsx       # Showcase of Direct Chat, Groups, Real-time & Smart Scroll
-        ├── TechPillars.tsx       # Production-grade architecture & tech stack display
-        └── LandingFooter.tsx     # Footer links, attribution & status
+    ├── auth/                     # login-modal/index.tsx
+    ├── chat/                     # sidebar, chat-area, chat-header, message-list, group-info-drawer...
+    ├── common/                   # avatar, empty-state, skeleton, error-banner
+    └── home/                     # navbar, hero-section, interactive-demo, feature-showcase, architecture-visualizer, footer
 ```
 
 ---

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { MessageSquare, Menu, X, ArrowRight, BookOpen, Layers, Zap, Cpu } from 'lucide-react';
 import { useAuth } from '@/context';
 
-export function LandingNavbar() {
+export function HomeNavbar() {
   const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

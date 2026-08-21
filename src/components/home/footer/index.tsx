@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { MessageSquare, Code2, BookOpen } from 'lucide-react';
 
-export function LandingFooter() {
+export function HomeFooter() {
   return (
     <footer className="border-t border-slate-850 bg-slate-950 py-12 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
