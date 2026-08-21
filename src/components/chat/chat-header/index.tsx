@@ -68,7 +68,7 @@ export function ChatHeader({ conversation, onBack }: ChatHeaderProps) {
           {isGroup && (
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/70 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all active:scale-95"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-800/70 hover:bg-slate-800 border border-slate-700/60 rounded-xl transition-all"
             >
               <Users className="w-3.5 h-3.5 text-purple-400" />
               <span className="hidden sm:inline">Group Info</span>

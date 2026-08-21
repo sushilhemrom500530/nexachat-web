@@ -53,7 +53,7 @@ export function LandingNavbar() {
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/chat"
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all duration-200 active:scale-95"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-semibold shadow-lg shadow-indigo-600/30 transition-all duration-200"
           >
             <span>{user ? 'Open App' : 'Launch Web App'}</span>
             <ArrowRight className="w-3.5 h-3.5" />

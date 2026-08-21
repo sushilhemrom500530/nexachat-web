@@ -106,7 +106,7 @@ export function MessageInput({
           type="button"
           onClick={handleSend}
           disabled={!canSend}
-          className="p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 transition-all duration-200 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 flex-shrink-0"
+          className="p-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
         >
           {isSending ? (
             <Loader2 className="w-4 h-4 animate-spin" />

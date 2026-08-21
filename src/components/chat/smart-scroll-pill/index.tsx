@@ -18,7 +18,7 @@ export function SmartScrollPill({ visible, unreadCount = 0, onClick }: SmartScro
       <button
         onClick={onClick}
         className={cn(
-          'inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-xl shadow-indigo-900/60 border border-indigo-400/30 backdrop-blur-md transition-all active:scale-95'
+          'inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-xl shadow-indigo-900/60 border border-indigo-400/30 backdrop-blur-md transition-all'
         )}
       >
         <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />

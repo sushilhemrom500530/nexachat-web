@@ -126,7 +126,7 @@ export function InteractiveDemo() {
         <button
           type="button"
           onClick={simulateIncoming}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition-all active:scale-95 shadow-sm"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition-all shadow-sm"
         >
           <Zap className="w-3.5 h-3.5 text-indigo-400" />
           <span>Simulate Incoming</span>
@@ -200,7 +200,7 @@ export function InteractiveDemo() {
         <button
           type="submit"
           disabled={!inputVal.trim()}
-          className="p-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-xl transition-all shadow-md shadow-indigo-600/20 active:scale-95"
+          className="p-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-xl transition-all shadow-md shadow-indigo-600/20"
         >
           <Send className="w-3.5 h-3.5" />
         </button>

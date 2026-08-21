@@ -74,7 +74,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
             <button
               onClick={logout}
               title="Log Out"
-              className="p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-800/80 rounded-xl transition-all active:scale-95"
+              className="p-2 text-slate-400 hover:text-rose-400 hover:bg-slate-800/80 rounded-xl transition-all"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -86,7 +86,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsSearchModalOpen(true)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/20 transition-all active:scale-95"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/20 transition-all"
             >
               <UserPlus className="w-3.5 h-3.5" />
               <span>New Chat</span>
@@ -94,7 +94,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
 
             <button
               onClick={() => setIsGroupModalOpen(true)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 hover:text-white rounded-xl text-xs font-semibold border border-slate-700/60 transition-all active:scale-95"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 hover:text-white rounded-xl text-xs font-semibold border border-slate-700/60 transition-all"
             >
               <Plus className="w-3.5 h-3.5 text-purple-400" />
               <span>New Group</span>
