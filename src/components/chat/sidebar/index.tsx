@@ -86,7 +86,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsSearchModalOpen(true)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-indigo-600/20 transition-all"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold transition-all"
             >
               <UserPlus className="w-3.5 h-3.5" />
               <span>New Chat</span>
@@ -121,7 +121,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
               onClick={() => setActiveTab('all')}
               className={`flex-1 flex items-center justify-center gap-1 py-1 rounded-lg text-[11px] font-medium transition-all ${
                 activeTab === 'all'
-                  ? 'bg-slate-800 text-white shadow-sm'
+                  ? 'bg-slate-800 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -138,7 +138,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
               onClick={() => setActiveTab('direct')}
               className={`flex-1 flex items-center justify-center gap-1 py-1 rounded-lg text-[11px] font-medium transition-all ${
                 activeTab === 'direct'
-                  ? 'bg-slate-800 text-white shadow-sm'
+                  ? 'bg-slate-800 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -150,7 +150,7 @@ export function Sidebar({ onSelectConversation }: SidebarProps) {
               onClick={() => setActiveTab('group')}
               className={`flex-1 flex items-center justify-center gap-1 py-1 rounded-lg text-[11px] font-medium transition-all ${
                 activeTab === 'group'
-                  ? 'bg-slate-800 text-white shadow-sm'
+                  ? 'bg-slate-800 text-white'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >

@@ -126,7 +126,7 @@ export function InteractiveDemo() {
         <button
           type="button"
           onClick={simulateIncoming}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition-all shadow-sm"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition-all"
         >
           <Zap className="w-3.5 h-3.5 text-indigo-400" />
           <span>Simulate Incoming</span>
@@ -174,7 +174,7 @@ export function InteractiveDemo() {
           <div className="absolute bottom-4 right-4 z-10 animate-bounce">
             <button
               onClick={scrollToBottom}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-600 text-white text-xs font-semibold shadow-lg shadow-indigo-600/40 border border-indigo-400/40 hover:bg-indigo-500 transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-600 text-white text-xs font-semibold border border-indigo-400/40 hover:bg-indigo-500 transition-all"
             >
               <ArrowDown className="w-3.5 h-3.5" />
               <span>{unreadNewCount} new message{unreadNewCount > 1 ? 's' : ''}</span>
@@ -198,7 +198,7 @@ export function InteractiveDemo() {
         <button
           type="submit"
           disabled={!inputVal.trim()}
-          className="p-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-xl transition-all shadow-md shadow-indigo-600/20"
+          className="p-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-xl transition-all"
         >
           <Send className="w-3.5 h-3.5" />
         </button>

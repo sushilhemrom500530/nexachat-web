@@ -147,7 +147,7 @@ export function SearchUserModal({ isOpen, onClose }: SearchUserModalProps) {
                 <button
                   onClick={() => handleStartChat(u)}
                   disabled={isStartingChat === u._id}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium shadow-md shadow-indigo-600/20 transition-all disabled:opacity-50"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium transition-all disabled:opacity-50"
                 >
                   {isStartingChat === u._id ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
