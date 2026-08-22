@@ -77,10 +77,10 @@ export function FeatureShowcase() {
             return (
               <div
                 key={i}
-                className="group relative p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 hover:border-indigo-500/40 hover:bg-slate-900/90 transition-all duration-300 shadow-lg shadow-black/40 hover:-translate-y-1"
+                className="group relative p-7 rounded-3xl bg-slate-900/60 border border-slate-800/80 hover:border-indigo-500/40 hover:bg-slate-900/90 transition-colors duration-300 shadow-lg shadow-black/40"
               >
                 <div
-                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center text-white shadow-lg mb-5 group-hover:scale-110 transition-transform`}
+                  className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center text-white shadow-lg mb-5`}
                 >
                   <Icon className="w-6 h-6 stroke-[1.8]" />
                 </div>
